@@ -4,6 +4,7 @@ import cookieparser from 'cookie-parser'
 import authRoutes from "./routes/auth.routes.js";
 import connectToMDB from "./db/connectToMDB.js";
 import messageRoutes from "./routes/message.routes.js";
+import userRoutes from "./routes/user.routes.js";
 
 const  app = express();
 app.use(express.json())
@@ -13,6 +14,7 @@ const PORT =process.env.PORT || 5000
 
 app.use("/api/auth",authRoutes)
 app.use("/api/messages",messageRoutes)
+app.use("/api/users",userRoutes)
 app.get("/" , (req,res)=>{
     res.send("Hi therew")
 })
