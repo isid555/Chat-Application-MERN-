@@ -6,7 +6,7 @@ import useSignup from "../../hooks/useSignup.js";
 
 const Signup = ()=>{
 
-    const {signup} = useSignup();
+    const {loading,signup} = useSignup();
 
     const [input,setInput] = useState({
         fullName:'',
@@ -85,8 +85,8 @@ const Signup = ()=>{
 
 
                     <div>
-                        <button className={"btn btn-block btn-sm mt-2 "}>
-                            Signup
+                        <button className={"btn btn-block btn-sm mt-2 "} disabled={loading}>
+                            {loading ? <span className={"loading loading-spinner"}></span> : "Sign up"}
                         </button>
                     </div>
 
