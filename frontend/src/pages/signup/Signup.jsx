@@ -1,6 +1,29 @@
 import GenderCheckbox from "./GenderCheckbox.jsx";
+import {Link} from "react-router-dom";
+import {useState} from "react";
+import useSignup from "../../hooks/useSignup.js";
 
 const Signup = ()=>{
+
+    const {loading,signup} = useSignup();
+
+    const [input,setInput] = useState({
+        fullName:'',
+        username:'',
+        password:'',
+        confirmPassword:'',
+        gender:''
+    })
+
+    const  handleCheckBox = (gender)=>{
+    setInput({...input , gender: gender})
+    }
+
+    const handleSubmit = async (e) =>{
+    e.preventDefault()
+        await signup(input)
+    }
+
     return(
         <div className={"flex flex-col items-center justify-center min-w-96 mx-auto  "}>
 
@@ -12,7 +35,7 @@ const Signup = ()=>{
                 </h1>
 
 
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div>
                         <label className={"label p-2"}>
                         <span className={"text-base label-text"}>
@@ -20,7 +43,9 @@ const Signup = ()=>{
                         </span>
                         </label>
                         <input type={"text"} placeholder={"Enter Fullname"}
-                               className={" w-full  input input-bordered h-10"}/>
+                               className={" w-full  input input-bordered h-10"} value={input.fullName} onChange={(e)=>{
+                                   setInput({...input , fullName: e.target.value})
+                        }}/>
                     </div>
                     <div>
                         <label className={"label p-2"}>
@@ -29,27 +54,33 @@ const Signup = ()=>{
                         </span>
                         </label>
                         <input type={"text"} placeholder={"Enter Username"}
-                               className={" w-full  input input-bordered h-10"}/>
+                               className={" w-full  input input-bordered h-10"} value={input.username} onChange={(e)=>{
+                                   setInput({...input , username: e.target.value})
+                        }}/>
                     </div>
                     <div>
                         <label className={"label"}>
                             <span className={"text-base label-text"}>Password</span>
                         </label>
-                        <input type="text" placeholder={"Enter Password"}
-                               className={"w-full  input input-bordered h-10"}/>
+                        <input type="password" placeholder={"Enter Password"}
+                               className={"w-full  input input-bordered h-10"} value={input.password} onChange={(e)=>{
+                                   setInput({...input , password: e.target.value})
+                        }}/>
                     </div>
 
                     <div>
                         <label className={"label"}>
                             <span className={"text-base label-text"}>Confirm Password</span>
                         </label>
-                        <input type="text" placeholder={"Enter Confirm Password "}
-                               className={"w-full  input input-bordered h-10"}/>
+                        <input type="password" placeholder={"Enter Confirm Password "}
+                               className={"w-full  input input-bordered h-10"} value={input.confirmPassword} onChange={(e)=>{
+                                   setInput({...input , confirmPassword: e.target.value})
+                        }}/>
                     </div>
 
-                    <GenderCheckbox/>
+                    <GenderCheckbox onCheckBoxChange={handleCheckBox} selectedGender={input.gender}/>
 
-                    <a href="#" className={"text-sm hover:underline hover:text-blue-600 mt-2 inline-block"}>Already have an account?</a>
+                    <Link to={"/login"} className={"text-sm hover:underline hover:text-blue-600 mt-2 inline-block"}>Already have an account?</Link>
 
 
                     <div>
