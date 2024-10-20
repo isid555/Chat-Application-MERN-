@@ -3,9 +3,10 @@ import {Link} from "react-router-dom";
 import {useState} from "react";
 import useSignup from "../../hooks/useSignup.js";
 
+
 const Signup = ()=>{
 
-    const {loading,signup} = useSignup();
+    const {signup} = useSignup();
 
     const [input,setInput] = useState({
         fullName:'',
