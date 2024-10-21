@@ -11,6 +11,7 @@ const MessageInput = () =>{
 
         await  sendMessage(message);
         setMessage(" ")
+
     }
 
 return(

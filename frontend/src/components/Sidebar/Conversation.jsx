@@ -1,10 +1,13 @@
 import useConversation from "../../zustland/useConversation.js";
+import {useSocketContext} from "../../context/SocketContext.jsx";
 
 const Conversation = ({conversation})=>{
 
 
     const {selectedConversation,setselectedConversation} = useConversation()
     const isSelected = selectedConversation?._id === conversation._id;
+    const {onlineUsers} = useSocketContext()
+    const isOnline = onlineUsers.includes(conversation._id)
 
 return(
     <div>
@@ -14,7 +17,7 @@ return(
         onClick={()=>setselectedConversation(conversation)}
         >
 
-            <div className={"avatar online"}>
+            <div className={`avatar ${isOnline ? "online" :"offline"}`}>
                 <div className={"w-12 rounded-full"}>
                     <img src={conversation.profilePic} alt="profilepicture"/>
                 </div>

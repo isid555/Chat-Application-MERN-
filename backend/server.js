@@ -6,7 +6,7 @@ import connectToMDB from "./db/connectToMDB.js";
 import messageRoutes from "./routes/message.routes.js";
 import userRoutes from "./routes/user.routes.js";
 
-const  app = express();
+import {app,server,io} from "./socket/socket.js";
 app.use(express.json())
 app.use(cookieparser())
 dotenv.config()
@@ -20,7 +20,7 @@ app.get("/" , (req,res)=>{
 })
 
 
-app.listen(PORT , ()=>{
+server.listen(PORT , ()=>{
     connectToMDB();
     console.log(`Running on port ${PORT}`)
 })

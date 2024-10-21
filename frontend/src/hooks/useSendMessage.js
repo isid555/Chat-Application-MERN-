@@ -22,7 +22,7 @@ const  useSendMessage = () =>{
             }
             setMessages([...messages,data])
         }catch (error){
-            toast.error(error.message)
+            // toast.error(error.message)
         }finally {
             setLoading(false)
         }
