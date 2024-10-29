@@ -65,7 +65,7 @@ To get a local copy up and running, follow these steps.
 
 
 3. **Access the Application**:
-   Open your browser and go to `http://localhost:3000`
+   Open your browser and go to `http://localhost:8000`
 
 ## ScreenSnaps
 1. ### Authentication pages
