@@ -14,7 +14,8 @@ A real-time chat application built using the MERN (MongoDB, Express, React, Node
 
 ## Demo
 
-[https://chat-app-mern-fkn7.onrender.com/](#) (Add the link to your live demo here if available)
+[https://chat-app-mern-fkn7.onrender.com/]
+
 
 ## Table of Contents
 
